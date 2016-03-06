@@ -43,58 +43,58 @@
 
 //-------------------------------------------------------------------------------
 
-//#include <iostream>
-//#include <chrono>
-//typedef std::chrono::high_resolution_clock Clock;
-//
-//int main()
-//{
-//	int count = 0;
-//	auto t1 = Clock::now();
-//	auto t2 = Clock::now();
-//	while (t1 == t2){
-//		t2 = Clock::now();
-//		count++;
-//	}
-//
-//	std::cout << count << std ::endl;
-//	std::cout << "Delta t2-t1: "
-//		<< std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count()
-//		<< " nanoseconds" << std::endl;
-//	system("pause");
-//	return 0;
-//}
-//------------------------------------------------------------------
 #include <iostream>
-#include <windows.h>                // for Windows APIs
-using namespace std;
+#include <chrono>
+typedef std::chrono::high_resolution_clock Clock;
 
 int main()
 {
-	LARGE_INTEGER frequency;        // ticks per second
-	LARGE_INTEGER t1, t2;           // ticks
-	double elapsedTime;
-	long count = 1000000;
-	// get ticks per second
-	QueryPerformanceFrequency(&frequency);
+	int count = 0;
+	auto t1 = Clock::now();
+	auto t2 = Clock::now();
+	while (t1 == t2){
+		t2 = Clock::now();
+		count++;
+	}
 
-	// start timer
-	QueryPerformanceCounter(&t1);
-
-	// do something
-
-	while (count > 100)
-		count--;
-
-		// stop timer
-		QueryPerformanceCounter(&t2);
-
-	// compute and print the elapsed time in millisec
-	elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
-	cout << elapsedTime << " ms.\n";
+	std::cout << count << std ::endl;
+	std::cout << "Delta t2-t1: "
+		<< std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count()
+		<< " nanoseconds" << std::endl;
 	system("pause");
 	return 0;
 }
+//------------------------------------------------------------------
+//#include <iostream>
+//#include <windows.h>                // for Windows APIs
+//using namespace std;
+//
+//int main()
+//{
+//	LARGE_INTEGER frequency;        // ticks per second
+//	LARGE_INTEGER t1, t2;           // ticks
+//	double elapsedTime;
+//	long count = 1000000;
+//	// get ticks per second
+//	QueryPerformanceFrequency(&frequency);
+//
+//	// start timer
+//	QueryPerformanceCounter(&t1);
+//
+//	// do something
+//
+//	while (count > 100)
+//		count--;
+//
+//		// stop timer
+//		QueryPerformanceCounter(&t2);
+//
+//	// compute and print the elapsed time in millisec
+//	elapsedTime = (t2.QuadPart - t1.QuadPart) * 1000.0 / frequency.QuadPart;
+//	cout << elapsedTime << " ms.\n";
+//	system("pause");
+//	return 0;
+//}
 
 
 
